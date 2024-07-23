@@ -1,0 +1,19 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model CardDetails {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  cardNumber     String?
+  expiration     String?
+  postalCode     String?
+  cvv            String?
+  cardholderName String?
+}
